@@ -7,11 +7,19 @@ def read_str_input(string):
 
 
 def read_int_input(string):
-    return int(input(string))
+    while True:
+        try:
+            return int(input(string))
+        except ValueError:
+            print("Please enter an integer.")
 
 
 def read_float_input(string):
-    return float(input(string))
+    while True:
+        try:
+            return float(input(string))
+        except ValueError:
+            print("Please enter an float or integer.")
 
 
 def int_range_loops(end):
@@ -73,29 +81,52 @@ def switch_for_levis_to_grams(levis, nail, bullet):
 
     return levis_grams + nail_grams + bullet_grams
 
-    
+
+def creat_random_num(start, end, times):
+    nums = []
+
+    for i in range(0, times):
+        nums.append(random.randint(start,end))
+
+    return nums
+
+
+def print_list(list, format = " "):
+    list_items = ""
+
+    for item in list:
+        list_items += f"{item}{format}"
+
+    print(list_items)
+
+
 
 def start():
     print("\n\n############## Tehtävä 3: ##############\n\n")
 
-    print(f"\n3.1-\nTerve : {get_full_name()}")
 
-    print("\n\n3.2-")
+    print(f"\n3.1 -\nTerve : {get_full_name()}")
+
+
+    print("\n\n3.2 -")
     radius = read_float_input("Enter a radius of circle: ")
     print(f"Ympyrän pinta alan on = {calculating_area_of_circle(radius)}")
 
-    print("\n\n3.3-")
+
+    print("\n\n3.3 -")
     rectangle_width = read_float_input("Enter a rectangle width: ")
     rectangle_length = read_float_input("Enter a rectang lelength: ")
     print(f"The area of rectangle is : {calculate_area_of_rectangle(rectangle_width,rectangle_length)}")
 
-    print("\n\n3.4-")
+
+    print("\n\n3.4 -")
     number3_4 = int_range_loops(3)
     print(f"\n- The sum of numbers is = {sum_number(number3_4)}")
     print(f"\n- The product of numbers is = {product_number(number3_4)}")
-    print(f"\n- The average of numbers is = {average_of_numbers(number3_4)}")
+    print(f"\n- The average of numbers is = {average_of_numbers(number3_4):.1f}")
 
-    print("\n\n3.5-")
+
+    print("\n\n3.5 -")
     levis = read_float_input("Enter a levis : ")
     nail = read_float_input("Enter a nail : ")
     bullet = read_float_input("Enter a bullet : ")
@@ -106,7 +137,14 @@ def start():
     mass_grams = total_grams % 1000
     print(f"\nThe mass is = {mass_kg:.0f} kg and {mass_grams:.2f} grams.")
 
-    print("\n\n3.6-")
 
+    print("\n\n3.6 -")
+    pin_code_3n = creat_random_num(0, 9 , 3)
+    print("- Pin code 3 Nums = ", end =  " ")
+    print_list(pin_code_3n, "")
+
+    pin_code_4n = creat_random_num(1, 6 , 4)
+    print("- Pin code 4 Nums = ", end =  " ")
+    print_list(pin_code_4n, "")
 
 start()
