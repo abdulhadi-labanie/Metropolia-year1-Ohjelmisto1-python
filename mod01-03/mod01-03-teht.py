@@ -66,6 +66,15 @@ def average_of_numbers(nums):
     return total / i
 
 
+def switch_for_levis_to_grams(levis, nail, bullet):
+    levis_grams = levis * 20 * 32 * 13.3
+    nail_grams = nail * 32 * 13.3
+    bullet_grams = bullet * 13.3
+
+    return levis_grams + nail_grams + bullet_grams
+
+    
+
 def start():
     print("\n\n############## Tehtävä 3: ##############\n\n")
 
@@ -87,8 +96,15 @@ def start():
     print(f"\n- The average of numbers is = {average_of_numbers(number3_4)}")
 
     print("\n\n3.5-")
+    levis = read_float_input("Enter a levis : ")
+    nail = read_float_input("Enter a nail : ")
+    bullet = read_float_input("Enter a bullet : ")
 
+    total_grams = switch_for_levis_to_grams(levis, nail, bullet)
 
+    mass_kg = total_grams // 1000
+    mass_grams = total_grams % 1000
+    print(f"\nThe mass is = {mass_kg:.0f} kg and {mass_grams:.2f} grams.")
 
     print("\n\n3.6-")
 
