@@ -17,7 +17,7 @@ def check_num_size(num, min_size, equals = True):
         return num > min_size
 
 
-def print_bool_ckeck_str(bool_result, true_result_str, false_result_str):
+def print_str_for_check_bool_result_(bool_result, true_result_str, false_result_str):
     if bool_result:
         print(true_result_str)
     else:
@@ -39,6 +39,32 @@ def check_cabin_class(answer):
         print("Error message! Invalid cabin class (LUX, A, B or C)")
 
 
+def read_gender():
+    user_gender = read_str_input("Enter your gender (M/F): ")
+    while(True):
+        if user_gender.upper() != 'M' and user_gender.upper() != 'F':
+            print("Chuose (M/F)!!!!!!!")
+            user_gender = read_str_input("Enter your gender (M/F): ")
+        else:
+            return user_gender.upper()
+
+
+def calculating_hemoglobin(gender, value):
+    if gender == 'M':
+        if value < 134:
+            return "Low"
+        elif value >= 134 and value <= 167:
+            return "Good"
+        else:
+            return "Too Hight"
+    else:
+        if value < 117:
+            return "Low"
+        elif value >= 117 and value <= 155:
+            return "Good"
+        else:
+            return "Too Hight"
+        
 
 def start():
     print("\n\n############## Tehtävä 4: ##############\n\n")
@@ -46,7 +72,8 @@ def start():
 
     print(f"\n4.1 -\n")
     fish_length = read_int_input("Enter a fish length: ")
-    print_bool_ckeck_str(check_num_size(fish_length, 42), "the fish length is good.", "A zander must be 42 centimeters or longer to meet the size limit.")
+    print_str_for_check_bool_result_(check_num_size(fish_length, 42), "the fish length is good.",
+                                      "A zander must be 42 centimeters or longer to meet the size limit.")
 
 
     print(f"\n4.2 -\n")
@@ -58,5 +85,13 @@ def start():
     user_cabin_class = read_str_input("Enter a cabin class: ")
     check_cabin_class(user_cabin_class)
 
+
+    print(f"\n4.3 -\n")
+    user_gender = read_gender()
+    user_hemohlobin_value = read_int_input("Enter your hemoglobin value (g/l): ")
+    print(f"As {user_gender} and your hemoglobin {user_hemohlobin_value} is {calculating_hemoglobin(user_gender, user_hemohlobin_value)}.")
+
+
+    print(f"\n4.4 -\n")
 
 start()
