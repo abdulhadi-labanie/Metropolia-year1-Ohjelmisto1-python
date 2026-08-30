@@ -16,7 +16,7 @@ def start():
     user_name = read_str_input("Please enter your name: ")
     user_age = read_int_input("Please enter your age: ")
 
-    print(f"\nWelcome pilot {user_name} to the plane! Sorry the play :)")
+    print(f"\nWelcome pilot {user_name} to the plane! Sorry the game :)")
     print(f"Your age is {user_age} year.\n")
 
 

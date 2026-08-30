@@ -64,7 +64,24 @@ def calculating_hemoglobin(gender, value):
             return "Good"
         else:
             return "Too Hight"
-        
+
+
+def IsLeapYear(Year):
+
+    if (Year % 400 == 0):
+        return True
+    elif (Year % 4 == 0 and Year % 100 != 0):
+        return True
+    else:
+        return False
+
+
+def print_is_leap_year(bool_value, Year):
+    if bool_value:
+        print(f"The {Year} is a leap year.")
+    else:
+        print(f"The {Year} is not leap year!!!!")
+
 
 def start():
     print("\n\n############## Tehtävä 4: ##############\n\n")
@@ -93,7 +110,8 @@ def start():
 
 
     print(f"\n4.4 -\n")
-    
+    user_year_input = read_int_input("Enter a year to check of it (Leap Year) or not: ")
+    print_is_leap_year(IsLeapYear(user_year_input), user_year_input)
 
 
 start()
