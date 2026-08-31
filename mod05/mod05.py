@@ -1,3 +1,5 @@
+import random
+
 def read_str_input(string):
     return input(string)
 
@@ -76,8 +78,24 @@ def read_user_nums(exception):
         if larger is None or user_input > larger:
             larger = user_input
 
-    
 
+def guess_random_number(rand_start, rand_end):
+    rand_num = random.randint(rand_start, rand_end)
+    user_input = read_int_input("Enter a number to gess random number: ")
+
+    while True:
+        if user_input == rand_num:
+            print(f"Yes, you gess the random number. you number is ({user_input}) and the random number in ({rand_num})")
+            break
+
+        elif  user_input < rand_num:
+            print(f"No, the random number is larger than ({user_input})!!")
+        elif  user_input > rand_num:
+            print(f"No, the random number is smaller than ({user_input})!!")
+
+        user_input = read_int_input("Enter a number to gess random number: ")
+
+    
 def start():
     print("\n\n############## Tehtävä 5: ##############\n\n")
 
@@ -96,10 +114,13 @@ def start():
     print(f"\n- The smaller number is = {smaller}.")
     print(f"- The larger number is = {larger}.")
 
+
     print(f"\n5.4 -\n\n")
+    guess_random_number(1, 10)
 
 
     print(f"\n5.5 -\n\n")
+
 
 
     print(f"\n5.6 -\n\n")
