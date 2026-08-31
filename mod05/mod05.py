@@ -95,7 +95,35 @@ def guess_random_number(rand_start, rand_end):
 
         user_input = read_int_input("Enter a number to gess random number: ")
 
-    
+
+def user_login():
+    user_name = "python"
+    password = "rules"
+
+    print("Hello, login with user name and password:\n")
+
+    user_name_input = read_str_input("Enter a user name: ")
+    password_input = read_str_input("Enter a password: ")
+
+    i = 5
+    while True:
+        if i > 1:
+            if user_name_input == user_name and password_input == password:
+                print("\nAccepted the user name and password, Welcome to our program.")
+                break
+            else:
+                i -= 1
+                print("\nIncorrect username or password!!!")
+                print(f"You have {i} attempts\n")
+
+                user_name_input = read_str_input("Enter a user name again: ")
+                password_input = read_str_input("Enter a password again: ")
+
+        else:
+            print("\nYou have exhausted your attempts!!\nYour tries to register 5 times with incorrect information!!!")
+            break
+
+
 def start():
     print("\n\n############## Tehtävä 5: ##############\n\n")
 
@@ -120,7 +148,7 @@ def start():
 
 
     print(f"\n5.5 -\n\n")
-
+    user_login()
 
 
     print(f"\n5.6 -\n\n")
