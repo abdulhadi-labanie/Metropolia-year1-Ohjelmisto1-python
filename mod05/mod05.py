@@ -25,12 +25,11 @@ def read_int_input_with_exception(string, exception):
             print("Please enter an integer.")
 
 
-
 def is_divided_into_three(start, end):
     num = start
     divided_nums = []
 
-    while num < end:
+    while num <= end:
         if num % 3 == 0:
             divided_nums.append(num)
         num += 1
@@ -56,7 +55,6 @@ def read_and_print_user_inch_values():
         else:
             total = user_input * inch
             print(f"The inchs {user_input} = {total}cm.")
-
 
 
 def read_user_nums(exception):
@@ -124,6 +122,22 @@ def user_login():
             break
 
 
+def approximation_of_pi(N):
+    n = 0
+    laskuri = 0
+
+    while laskuri < N:
+        x = random.uniform(-1, 1)
+        y = random.uniform(-1, 1)
+
+        if x**2 + y**2 < 1:
+            n += 1
+
+        laskuri += 1
+
+    return 4 * n / N
+
+
 def start():
     print("\n\n############## Tehtävä 5: ##############\n\n")
 
@@ -139,8 +153,8 @@ def start():
 
     print(f"\n5.3 -\n\n")
     smaller, larger = read_user_nums("")
-    print(f"\n- The smaller number is = {smaller}.")
-    print(f"- The larger number is = {larger}.")
+    print(f"\n- The smaller number is = {smaller}")
+    print(f"- The larger number is = {larger}")
 
 
     print(f"\n5.4 -\n\n")
@@ -152,7 +166,8 @@ def start():
 
 
     print(f"\n5.6 -\n\n")
-
+    N = read_int_input("Enter the number of points to generate: ")
+    print(f"Approximation of Pi: {approximation_of_pi(N)}")
 
 
 start()
