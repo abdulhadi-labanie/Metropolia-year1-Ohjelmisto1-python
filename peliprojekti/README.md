@@ -1,10 +1,7 @@
 # EcoAirline Manager 🎮
 
-## Abdulhadi Labanie ✈️
+## Tekijä: Abdulhadi Labanie ✈️
 
-Tekijä: Abdulhadi Labanie
-Kurssi: Ohjelmointiprojekti
-Oppilaitos: Metropolia AMK
 
 ## Kuvaus pelistä
 
