@@ -69,6 +69,13 @@ def calculate_sum(numbers: list[int]) -> int:
     return total
 
 
+def remove_odd_numbers(numbers: list[int]) -> list[int]:
+    even_numbers = []
+    for num in numbers:
+        if num % 2 == 0:
+            even_numbers.append(num)
+    return even_numbers
+
 
 def start():
     print("\n\n############## Tehtävä 7: ##############\n\n")
@@ -95,7 +102,10 @@ def start():
 
 
     print(f"\n\n7.5 -\n")
-
+    original_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    filtered_list = remove_odd_numbers(original_list)
+    print(f"Original list: {original_list}")
+    print(f"Filtered (even numbers only): {filtered_list}")
 
 
     print(f"\n\n7.6 -\n")
