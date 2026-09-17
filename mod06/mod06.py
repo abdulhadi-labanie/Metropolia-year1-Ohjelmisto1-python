@@ -67,6 +67,32 @@ def get_largest_numbers_in_list(user_list: list, nums=5):
     return user_list[:nums]
 
 
+def is_prime_number(number: int) -> bool:
+    if number < 2:
+        return False
+
+    for i in range(2, number):
+        if number % i == 0:
+            return False
+        
+    return True
+
+
+def print_is_prime_number(number):
+    if is_prime_number(number):
+        print(f"{number} is a prime number.")
+    else:
+        print(f"{number} is not a prime number!!!")
+
+
+def create_list_of_prime_number(user_list: list):
+    prime_list = []
+    for number in user_list:
+        if is_prime_number(number):
+            prime_list.append(number)
+    return prime_list
+
+
 def start():
     print("\n\n############## Tehtävä 6: ##############\n\n")
 
@@ -76,12 +102,16 @@ def start():
 
 
     print(f"\n6.2 -\n\n")
-    user_input_list_numbers , count = get_number_form_user()
-    largest_numbers_in_list = get_largest_numbers_in_list(user_input_list_numbers,5)
-    print(f"\nThe number you enter count are {count} and the largest 5 numbers you enter are: {largest_numbers_in_list}")
+    user_input_list_numbers6_2 , count6_2 = get_number_form_user()
+    largest_numbers_in_list = get_largest_numbers_in_list(user_input_list_numbers6_2,5)
+    print(f"\nThe number you enter count are {count6_2} and the largest 5 numbers you enter are: {largest_numbers_in_list}")
+
 
     print(f"\n6.3 -\n\n")
-    
+    user_input_list_numbers6_3 , count6_3 = get_number_form_user()
+    prime_nums_list = create_list_of_prime_number(user_input_list_numbers6_3)
+    print(f"\nThe prime numbers you enter it are: {prime_nums_list}")
+
 
     print(f"\n6.4 -\n\n")
 
