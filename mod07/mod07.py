@@ -49,7 +49,18 @@ def roll_dise_for_max_sides():
     while result != max_sides:
         result = random_dice(max_sides)
     return result
-    
+
+
+def get_liters(gallons: float) -> float:
+    return gallons * 3.785
+
+
+def gallons_to_liters():
+    gallons = read_float_input("Enter gallons: ",0,1000000)
+    liters = get_liters(gallons)
+
+    print(f"{gallons} gallons = {liters:.2f} liters.")
+
 
 def start():
     print("\n\n############## Tehtävä 7: ##############\n\n")
@@ -65,7 +76,7 @@ def start():
 
 
     print(f"\n\n7.3 -\n")
-
+    gallons_to_liters()
 
 
     print(f"\n\n7.4 -\n")
