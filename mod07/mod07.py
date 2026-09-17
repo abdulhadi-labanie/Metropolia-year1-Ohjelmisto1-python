@@ -62,6 +62,14 @@ def gallons_to_liters():
     print(f"{gallons} gallons = {liters:.2f} liters.")
 
 
+def calculate_sum(numbers: list[int]) -> int:
+    total = 0
+    for num in numbers:
+        total += num
+    return total
+
+
+
 def start():
     print("\n\n############## Tehtävä 7: ##############\n\n")
 
@@ -80,7 +88,10 @@ def start():
 
 
     print(f"\n\n7.4 -\n")
-
+    list7_4 = [10, 25, 30, 47, 50]
+    total_sum7_4 = calculate_sum(list7_4)
+    print(f"Original list: {list7_4}")
+    print(f"Sum of elements: {total_sum7_4}")
 
 
     print(f"\n\n7.5 -\n")
