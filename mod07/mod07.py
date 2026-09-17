@@ -29,8 +29,8 @@ def read_float_input(string, min_val, max_val) -> float:
             print("Please enter an number!!!")
 
 
-def random_dice():
-    return random.randint(1,6)
+def random_dice(sides = 6) -> int:
+    return random.randint(1,sides)
 
 
 def get_dice_count_for_6():
@@ -43,31 +43,40 @@ def get_dice_count_for_6():
     return result, count
 
 
+def roll_dise_for_max_sides():
+    max_sides = read_int_input("Enter maximum sides of the dice: ", 2, 1000)
+    result = 0
+    while result != max_sides:
+        result = random_dice(max_sides)
+    return result
+    
+
 def start():
     print("\n\n############## Tehtävä 7: ##############\n\n")
 
-    print(f"\n7.1 -\n")
+    print(f"\n\n7.1 -\n")
     result_of_roll_dice, roll_count = get_dice_count_for_6()
     print(f"The dice rolled count are {roll_count} to get {result_of_roll_dice}.")
 
 
-    print(f"\n7.2 -\n\n")
+    print(f"\n\n7.2 -\n")
+    roll_dice_max_sides = roll_dise_for_max_sides()
+    print(f"The dice is rolled {roll_dice_max_sides}")
+
+
+    print(f"\n\n7.3 -\n")
 
 
 
-    print(f"\n7.3 -\n\n")
+    print(f"\n\n7.4 -\n")
 
 
 
-    print(f"\n7.4 -\n\n")
+    print(f"\n\n7.5 -\n")
 
 
 
-    print(f"\n7.5 -\n\n")
-
-
-
-    print(f"\n7.6 -\n\n")
+    print(f"\n\n7.6 -\n")
 
 
 
