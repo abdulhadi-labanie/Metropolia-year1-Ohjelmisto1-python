@@ -45,7 +45,7 @@ def sum_total_of_dice(dice_cont):
     return sum_total
 
 
-def get_number_form_user():
+def get_number_form_user_and_store_in_list() -> list:
     user_input_numbers = []
 
     i = 0
@@ -60,6 +60,14 @@ def get_number_form_user():
             i += 1
 
     return user_input_numbers, i
+
+
+def get_cities_list_with_for_loop(count=5):
+    cities = []
+    for i in range(count):
+        city = read_str_input(f"Enter city {i+1}: ")
+        cities.append(city)
+    return cities
 
 
 def get_largest_numbers_in_list(user_list: list, nums=5):
@@ -88,9 +96,16 @@ def print_is_prime_number(number):
 def create_list_of_prime_number(user_list: list):
     prime_list = []
     for number in user_list:
+        print_is_prime_number(number)
         if is_prime_number(number):
             prime_list.append(number)
     return prime_list
+
+
+def print_cities(cities_list: list):
+    for city in cities_list:
+        print (city)
+
 
 
 def start():
@@ -102,20 +117,21 @@ def start():
 
 
     print(f"\n6.2 -\n\n")
-    user_input_list_numbers6_2 , count6_2 = get_number_form_user()
+    user_input_list_numbers6_2 , count6_2 = get_number_form_user_and_store_in_list()
     largest_numbers_in_list = get_largest_numbers_in_list(user_input_list_numbers6_2,5)
     print(f"\nThe number you enter count are {count6_2} and the largest 5 numbers you enter are: {largest_numbers_in_list}")
 
 
     print(f"\n6.3 -\n\n")
-    user_input_list_numbers6_3 , count6_3 = get_number_form_user()
+    user_input_list_numbers6_3 , count6_3 = get_number_form_user_and_store_in_list()
     prime_nums_list = create_list_of_prime_number(user_input_list_numbers6_3)
     print(f"\nThe prime numbers you enter it are: {prime_nums_list}")
 
 
     print(f"\n6.4 -\n\n")
-
-
+    list_cities_of_user_input, count6_4 = get_cities_list_with_for_loop()
+    print(f"\nThe {count6_4} cities you enter are : ")
+    print_cities(list_cities_of_user_input)
 
 
 start()
