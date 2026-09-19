@@ -1,11 +1,6 @@
-from utils import read_str_input
-from start_game_menu import start_game
-from instructions_menu import instructions_menu
-import os
-
-
-def clear_screen():
-    os.system("cls" if os.name == "nt" else "clear")
+from utils import read_str_input, clear_screen
+from menus.start_game_menu import start_game
+from menus.instructions_menu import instructions_menu
 
 
 def main_menu_switcher():

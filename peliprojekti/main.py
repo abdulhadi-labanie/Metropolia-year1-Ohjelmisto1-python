@@ -1,5 +1,5 @@
 from utils import read_int_input, read_str_input
-from peliprojekti.menus.main_meun import main_menu
+from menus.main_meun import main_menu
 
 def login():
     user_name = read_str_input("> Please enter your name: ")

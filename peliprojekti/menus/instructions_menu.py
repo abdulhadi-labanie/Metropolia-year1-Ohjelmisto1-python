@@ -1,5 +1,4 @@
-from main_meun import clear_screen
-from utils import read_str_input
+from utils import read_str_input, clear_screen
 
 
 def instructions_menu_switcher():

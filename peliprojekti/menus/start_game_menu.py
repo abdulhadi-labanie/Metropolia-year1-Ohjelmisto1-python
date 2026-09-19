@@ -1,5 +1,4 @@
-from utils import read_int_input
-from main_meun import clear_screen
+from utils import read_int_input, clear_screen
 
 
 def continue_management_role():
