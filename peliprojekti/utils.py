@@ -34,9 +34,7 @@ def read_float_input(string, min_val=-1000000.0, max_val=1000000.0) -> float:
         try:
             user_input = float(input(string))
             if user_input < min_val or user_input > max_val:
-                print(
-                    f"Please choose a number between {min_val} and {max_val}"
-                )
+                print(f"Please choose a number between {min_val} and {max_val}")
                 continue
             return user_input
         except ValueError:

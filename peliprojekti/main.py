@@ -1,5 +1,5 @@
 from utils import read_int_input, read_str_input
-from menus import main_menu, clear_screen
+from peliprojekti.menus.main_meun import main_menu
 
 def login():
     user_name = read_str_input("> Please enter your name: ")
@@ -15,13 +15,12 @@ def login():
 
 
 def main():
-    print("\n*********** Projekti 1 & 2 ***********\n")
+    print("\n*********** Projekti 1 & 2 & 3 ***********\n")
     if login():
         is_running = True
 
         while is_running:
             is_running = main_menu()
-        
 
 
 if __name__ == "__main__":
