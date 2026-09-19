@@ -1,11 +1,8 @@
 from utils import read_int_input, clear_screen
+from logic import start_game_logic
 
 
 def continue_management_role():
-    pass
-
-
-def start_new_managing():
     pass
 
 
@@ -19,7 +16,7 @@ def star_game_switcher():
     if user_choice == 1:
         continue_management_role()
     elif user_choice == 2:
-        start_new_managing()
+        start_game_logic.start_new_managing()
     elif user_choice == 3:
         show_top_managers()
     else:
