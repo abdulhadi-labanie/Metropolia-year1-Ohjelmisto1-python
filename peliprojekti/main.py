@@ -1,5 +1,5 @@
 from utils import read_int_input, read_str_input
-from menus import main_menu
+from menus import main_menu, clear_screen
 
 def login():
     user_name = read_str_input("> Please enter your name: ")
@@ -18,11 +18,9 @@ def main():
     print("\n*********** Projekti 1 & 2 ***********\n")
     if login():
         is_running = True
-        
+
         while is_running:
             is_running = main_menu()
-    else:
-        print("\nGoodbye!!!")
         
 
 
