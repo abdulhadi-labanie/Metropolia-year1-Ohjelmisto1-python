@@ -1,10 +1,6 @@
 from utils import read_int_input, read_str_input, clear_screen
-from pathlib import Path
+from storage import create_new_manager_file, is_user_exist
 
-
-def is_user_exist(user_name):
-    file_path = Path(f"managers/{user_name}.json")
-    return file_path.exists()
 
 
 def register():
@@ -16,13 +12,12 @@ def register():
     while is_user_exist(user_name):
         print(f"\n[!] Sorry, the username '{user_name}' already exists. Please choose another one!!")
         user_name = read_str_input("> Please enter your name: ")
-        if not is_user_exist(user_name):
-            break
-        user_age = read_int_input("> Please enter your age: ", 1, 99)
 
     if user_age >= 12:
         print(f"\nWelcome {user_name} to the game! to the airline :)")
         print(f"Your age are {user_age} year.\n")
+        create_new_manager_file(user_name, user_age)
+
         input("\n> Press Enter to continue... ")
         return True
     else:
@@ -46,3 +41,5 @@ def login():
         return False
 
 
+def start_seshen():
+    pass    
