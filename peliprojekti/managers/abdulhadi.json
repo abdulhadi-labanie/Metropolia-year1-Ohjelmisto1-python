@@ -1,5 +1,34 @@
 {
     "user_name": "abdulhadi",
     "age": 22,
-    "career": []
+    "career": [
+        {
+            "company_name": "Eagle_airline",
+            "country": "Syria",
+            "hub_airport": "DAM",
+            "company_budget": 500000000,
+            "is_active": false,
+            "fleet_count": 0,
+            "years": {
+                "2026": {
+                    "planes": [],
+                    "total_company_co2_rating": 0
+                }
+            }
+        },
+        {
+            "company_name": "Eagle_airline2",
+            "country": "Finland",
+            "hub_airport": "HEL",
+            "company_budget": 500000000,
+            "is_active": true,
+            "fleet_count": 0,
+            "years": {
+                "2026": {
+                    "planes": [],
+                    "total_company_co2_rating": 0
+                }
+            }
+        }
+    ]
 }
