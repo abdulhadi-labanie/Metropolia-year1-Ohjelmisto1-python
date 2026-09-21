@@ -1,4 +1,4 @@
-# EcoAirline Manager 🎮
+# ECO-Airline Manager 🎮
 
 ## Tekijä: Abdulhadi Labanie ✈️
 

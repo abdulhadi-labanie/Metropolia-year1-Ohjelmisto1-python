@@ -1,6 +1,21 @@
-from utils import clear_screen, read_str_input, read_int_input
+from utils import clear_screen, read_str_input, read_bool_input
 from aircraft_catalog import print_aircraft_catalog_table, aircraft_catalog
-from storage import create_new_career, get_manager
+from storage import create_new_career, get_manager, storage_new_aircraft
+
+
+def get_active_company(current_manager):
+    for company in current_manager.get("career", []):
+        if company.get("is_active"):
+            return company
+    return None
+
+
+def update_success_data(current_manager_data):
+    updated_manager = get_manager(current_manager_data["user_name"])
+    current_manager_data.clear()
+    current_manager_data.update(updated_manager)
+    print("\n[ok] Data successfully saved and synchronized!")
+
 
 def Select_country_headquarters():
     print("This country for the company headquarters:")
@@ -10,27 +25,22 @@ def Select_country_headquarters():
         country = read_str_input("Select one of them: ").strip().capitalize()
         hub_airport = ""
 
-        if country == "Finland" or country == "1":
-            hub_airport = "HEL"
+        if country in ["Finland", "1"]:
+            country, hub_airport = "Finland", "HEL"
             is_country_selected = True
-        elif country == "Swiden" or country == "2":
-            hub_airport = "ARN"
+        elif country in ["Sweden", "Swiden", "2"]:
+            country, hub_airport = "Sweden", "ARN"
             is_country_selected = True
-        elif country == "Germany" or country == "3":
-            hub_airport = "BER"
+        elif country in ["Germany", "3"]:
+            country, hub_airport = "Germany", "BER"
             is_country_selected = True
-        elif country == "Turkish" or country == "4":
-            hub_airport = "IST"
+        elif country in ["Turkey", "Turkish", "4"]:
+            country, hub_airport = "Turkey", "IST"
             is_country_selected = True
-        elif country == "Syria" or country == "5":
-            hub_airport = "DAM"
+        elif country in ["Syria", "5"]:
+            country, hub_airport = "Syria", "DAM"
             is_country_selected = True
     return country, hub_airport
-
-
-def show_start_new_managing_screen(current_manager: dict):
-    print(f"\nWelcome to the airline, Manager {current_manager["user_name"]}.\n\n")
-    print_aircraft_catalog_table(aircraft_catalog())
 
 
 def fell_first_company_plan(current_manager):
@@ -45,19 +55,63 @@ def fell_first_company_plan(current_manager):
                                 hub_airport, company_budget, fleet_count)
 
     if success:
-        updated_manager = get_manager(current_manager["user_name"])
-        current_manager.clear()
-        current_manager.update(updated_manager)
-        print("\nCompany successfully created and saved :)")
+        update_success_data(current_manager)
+
+
+def show_aircraft_catalog_table(current_manager: dict):
+    active_company = get_active_company(current_manager)
+    print(f"\nWelcome to the airline, Manager {current_manager['user_name']}.\n\n")
+    print_aircraft_catalog_table(aircraft_catalog())
+
+
+def by_aircraft(current_manager, catalog_list):
+    is_want_by_aircraft = True
+
+    while is_want_by_aircraft:
+        active_company = get_active_company(current_manager)
+        if not active_company:
+            print("\n[!] Error: No active company found!")
+            break
+
+        current_budget = active_company["company_budget"]
+        print(f"\nYour company budget = {current_budget:,} €")
+        user_selection = read_str_input("\nSelect an aircraft by [model name] (e.g., A380-800 or A318): ").strip().upper()
+
+        selected_plane = None
+        for aircraft in catalog_list:
+            if aircraft["model"].upper() == user_selection:
+                selected_plane = aircraft
+                break
+
+        if selected_plane:
+            plane_price = selected_plane["financials"]["price"]
+            if current_budget >= plane_price:
+                new_budget = current_budget - plane_price
+                success = storage_new_aircraft(current_manager["user_name"], new_budget, selected_plane)
+
+                if success:
+                    update_success_data(current_manager)
+                    print(f"\n[ok] Successfully purchased {selected_plane['manufacturer']} {selected_plane['model']}!")
+            else:
+                print(f"\n[!] Budget insufficient! Price: {plane_price:,} €, Your Budget: {current_budget:,} €")
+        else:
+            print(f"\n[!] Aircraft model '{user_selection}' not found in catalog!")
+
+        is_want_by_aircraft = read_bool_input("\nDo you want to buy another aircraft? [y/n]: ")
 
 
 def start_new_managing(current_manager):
     clear_screen()
     fell_first_company_plan(current_manager)
 
-    show_start_new_managing_screen(current_manager)
+    input("\n> Press Enter to continue to Aircraft Market...")
 
-    input("\n> Press Enter to continue to company creation...")
+    clear_screen()
+    catalog_list = aircraft_catalog()
+    show_aircraft_catalog_table(current_manager)
+    by_aircraft(current_manager, catalog_list)
+
+    input("\n> Press Enter to return...")
 
 
 
@@ -85,10 +139,9 @@ def start_new_managing(current_manager):
                             {
                                 "manufacturer": "Airbus",
                                 "model": "A320neo",
-                                "model_quantity": 1,
                                 "required_crew": 6,
                                 "optimal_range_km": 820,
-                                "financials_all": {
+                                "financials": {
                                     "price": 110600000,
                                     "annual_maintenance_cost": 900000,
                                     "daily_operating_cost": 28500,

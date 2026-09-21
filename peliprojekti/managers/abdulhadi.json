@@ -3,29 +3,95 @@
     "age": 22,
     "career": [
         {
-            "company_name": "Eagle_airline",
-            "country": "Syria",
-            "hub_airport": "DAM",
-            "company_budget": 500000000,
+            "company_name": "Eagle_airlines",
+            "country": "1",
+            "hub_airport": "HEL",
+            "company_budget": 370500000,
             "is_active": false,
-            "fleet_count": 0,
+            "fleet_count": 1,
             "years": {
                 "2026": {
-                    "planes": [],
+                    "planes": [
+                        {
+                            "specs": {
+                                "manufacturer": "Airbus",
+                                "model": "A321neo",
+                                "required_crew": 7,
+                                "optimal_range_km": 1900,
+                                "financials": {
+                                    "price": 129500000,
+                                    "annual_maintenance_cost": 950000,
+                                    "daily_operating_cost": 32000,
+                                    "daily_net_profit": 102000
+                                },
+                                "operations_24h": {
+                                    "flights_per_24h": 2
+                                },
+                                "environmental_impact": {
+                                    "co2_emissions_per_km": 5.2,
+                                    "co2_rating": 9.8
+                                }
+                            },
+                            "stats": {
+                                "total_flights": 0,
+                                "successful_landings": 0,
+                                "failed_landings": 0,
+                                "gross_profit": 0,
+                                "net_profit": 0,
+                                "total_co2_emissions": 0.0
+                            },
+                            "supported_airports": [
+                                "HEL"
+                            ]
+                        }
+                    ],
                     "total_company_co2_rating": 0
                 }
             }
         },
         {
-            "company_name": "Eagle_airline2",
+            "company_name": "Eagle-airline",
             "country": "Finland",
             "hub_airport": "HEL",
-            "company_budget": 500000000,
+            "company_budget": 370500000,
             "is_active": true,
-            "fleet_count": 0,
+            "fleet_count": 1,
             "years": {
                 "2026": {
-                    "planes": [],
+                    "planes": [
+                        {
+                            "specs": {
+                                "manufacturer": "Airbus",
+                                "model": "A321neo",
+                                "required_crew": 7,
+                                "optimal_range_km": 1900,
+                                "financials": {
+                                    "price": 129500000,
+                                    "annual_maintenance_cost": 950000,
+                                    "daily_operating_cost": 32000,
+                                    "daily_net_profit": 102000
+                                },
+                                "operations_24h": {
+                                    "flights_per_24h": 2
+                                },
+                                "environmental_impact": {
+                                    "co2_emissions_per_km": 5.2,
+                                    "co2_rating": 9.8
+                                }
+                            },
+                            "stats": {
+                                "total_flights": 0,
+                                "successful_landings": 0,
+                                "failed_landings": 0,
+                                "gross_profit": 0,
+                                "net_profit": 0,
+                                "total_co2_emissions": 0.0
+                            },
+                            "supported_airports": [
+                                "HEL"
+                            ]
+                        }
+                    ],
                     "total_company_co2_rating": 0
                 }
             }
