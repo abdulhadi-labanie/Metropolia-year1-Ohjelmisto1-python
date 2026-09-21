@@ -46,3 +46,14 @@ def read_float_input(string, min_val=-1000000.0, max_val=1000000.0) -> float:
             return user_input
         except ValueError:
             print("Please enter a number!!!")
+
+
+def read_bool_input(string):
+    while True:
+        user_input = input(string).strip().lower()
+        if user_input == "True" or user_input == "1" or user_input == "yes" or user_input == "y":
+            return True
+        elif user_input == "False" or user_input == "0" or user_input == "no" or user_input == "n":
+            return False
+        else:
+            print("Please enter a [True or 1 or yes or y] or [False or 0 or no or n]!!!")
