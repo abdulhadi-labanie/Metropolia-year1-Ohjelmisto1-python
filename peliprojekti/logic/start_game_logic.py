@@ -28,13 +28,13 @@ def Select_country_headquarters():
         if country in ["Finland", "1"]:
             country, hub_airport = "Finland", "HEL"
             is_country_selected = True
-        elif country in ["Sweden", "Swiden", "2"]:
+        elif country in ["Swiden", "2"]:
             country, hub_airport = "Sweden", "ARN"
             is_country_selected = True
         elif country in ["Germany", "3"]:
             country, hub_airport = "Germany", "BER"
             is_country_selected = True
-        elif country in ["Turkey", "Turkish", "4"]:
+        elif country in ["Turkish", "4"]:
             country, hub_airport = "Turkey", "IST"
             is_country_selected = True
         elif country in ["Syria", "5"]:
@@ -100,6 +100,41 @@ def by_aircraft(current_manager, catalog_list):
         is_want_by_aircraft = read_bool_input("\nDo you want to buy another aircraft? [y/n]: ")
 
 
+def show_my_fleet(current_manager: dict):
+    active_company = get_active_company(current_manager)
+
+    if not active_company or not active_company.get("years"):
+        print("\n[!] No active company or fleet data found.")
+        return
+
+    latest_year = list(active_company["years"].keys())[-1]
+    owned_planes = active_company["years"][latest_year]["planes"]
+
+    print(f"\n\t===== {active_company['company_name']} - MY FLEET =====\n")
+
+    if not owned_planes:
+        print("Your fleet is currently empty! Buy aircraft from the market.")
+        return
+
+    header = f"| {'#':<3} | {'Model':<12} | {'Crew':<5} | {'Range(km)':<10} | {'CO2 Rating':<10} |"
+    divider = "-" * len(header)
+    print(divider)
+    print(header)
+    print(divider)
+
+    idx = 1
+    for plane in owned_planes:
+        model = plane["specs"]["model"]
+        crew = plane["specs"]["required_crew"]
+        opt_range = plane["specs"]["optimal_range_km"]
+        co2_rating = plane["specs"]["environmental_impact"]["co2_rating"]
+
+        print(f"| {idx:<3} | {model:<12} | {crew:<5} | {opt_range:<10,} | {co2_rating:<10.1f} |")
+        idx += 1
+
+    print(divider + "\n")
+
+
 def start_new_managing(current_manager):
     clear_screen()
     fell_first_company_plan(current_manager)
@@ -110,7 +145,7 @@ def start_new_managing(current_manager):
     catalog_list = aircraft_catalog()
     show_aircraft_catalog_table(current_manager)
     by_aircraft(current_manager, catalog_list)
-
+    show_my_fleet(current_manager)
     input("\n> Press Enter to return...")
 
 

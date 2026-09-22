@@ -1,0 +1,117 @@
+{
+    "user_name": "Sii",
+    "age": 43,
+    "career": [
+        {
+            "company_name": "Siilii-airlines",
+            "country": "Turkey",
+            "hub_airport": "IST",
+            "company_budget": 182500000,
+            "is_active": true,
+            "fleet_count": 3,
+            "years": {
+                "2026": {
+                    "planes": [
+                        {
+                            "specs": {
+                                "manufacturer": "Airbus",
+                                "model": "A321neo",
+                                "required_crew": 7,
+                                "optimal_range_km": 1900,
+                                "financials": {
+                                    "price": 129500000,
+                                    "annual_maintenance_cost": 950000,
+                                    "daily_operating_cost": 32000,
+                                    "daily_net_profit": 102000
+                                },
+                                "operations_24h": {
+                                    "flights_per_24h": 2
+                                },
+                                "environmental_impact": {
+                                    "co2_emissions_per_km": 5.2,
+                                    "co2_rating": 9.8
+                                }
+                            },
+                            "stats": {
+                                "total_flights": 0,
+                                "successful_landings": 0,
+                                "failed_landings": 0,
+                                "gross_profit": 0,
+                                "net_profit": 0,
+                                "total_co2_emissions": 0.0
+                            },
+                            "supported_airports": [
+                                "IST"
+                            ]
+                        },
+                        {
+                            "specs": {
+                                "manufacturer": "Airbus",
+                                "model": "A320neo",
+                                "required_crew": 6,
+                                "optimal_range_km": 820,
+                                "financials": {
+                                    "price": 110600000,
+                                    "annual_maintenance_cost": 900000,
+                                    "daily_operating_cost": 28500,
+                                    "daily_net_profit": 75000
+                                },
+                                "operations_24h": {
+                                    "flights_per_24h": 3
+                                },
+                                "environmental_impact": {
+                                    "co2_emissions_per_km": 5.7,
+                                    "co2_rating": 9.2
+                                }
+                            },
+                            "stats": {
+                                "total_flights": 0,
+                                "successful_landings": 0,
+                                "failed_landings": 0,
+                                "gross_profit": 0,
+                                "net_profit": 0,
+                                "total_co2_emissions": 0.0
+                            },
+                            "supported_airports": [
+                                "IST"
+                            ]
+                        },
+                        {
+                            "specs": {
+                                "manufacturer": "Airbus",
+                                "model": "A318",
+                                "required_crew": 5,
+                                "optimal_range_km": 150,
+                                "financials": {
+                                    "price": 77400000,
+                                    "annual_maintenance_cost": 1200000,
+                                    "daily_operating_cost": 18000,
+                                    "daily_net_profit": 36000
+                                },
+                                "operations_24h": {
+                                    "flights_per_24h": 6
+                                },
+                                "environmental_impact": {
+                                    "co2_emissions_per_km": 7.8,
+                                    "co2_rating": 5.0
+                                }
+                            },
+                            "stats": {
+                                "total_flights": 0,
+                                "successful_landings": 0,
+                                "failed_landings": 0,
+                                "gross_profit": 0,
+                                "net_profit": 0,
+                                "total_co2_emissions": 0.0
+                            },
+                            "supported_airports": [
+                                "IST"
+                            ]
+                        }
+                    ],
+                    "total_company_co2_rating": 0
+                }
+            }
+        }
+    ]
+}
