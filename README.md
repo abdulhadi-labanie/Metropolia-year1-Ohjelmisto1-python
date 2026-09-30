@@ -2,7 +2,7 @@
 
 ## Abdulhadi Labanie
 
-## Tehtävät
+## Suoritetuista tehtävistä ja harjoituksista
 
 ### Osio 1 ja 2
 * Ensimmäinen ohjelma
@@ -74,5 +74,7 @@
 * 11.1 Julkaisu-, Kirja- ja Lehti-luokat (tulosta_tiedot)
 
 ### Projekti 4
+* ....tulossa
 
 ### Projekti 5
+* ....tulossa
