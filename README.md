@@ -52,4 +52,23 @@
 * 7.6 Pizzan yksikköhinnan laskuri (€/m²)
 
 ### Projekti 3
-Teen töitä sen eteen!!
+* Päävalikon toiminnot ja inventaario
+* Tietojen tallennus JSON-tiedostoon
+
+### Osio 8 (Monikko, joukko ja sanakirja)
+* 8.1 Kuukauden vuodenaika (Monikko)
+* 8.2 Nimien tallennus ja tarkistus (Joukko)
+* 8.3 Lentoasematiedot ICAO-koodilla (Sanakirja)
+
+### Osio 9 (Luokka, olio, alustaja)
+* 9.1 Auto-luokka ja alustaja
+* 9.2 Auton kiihdytä-metodi ja hätäjarrutus
+* 9.3 Auton kulje-metodi
+* 9.4 Autokilpailu (10 autoa ja simulointi)
+
+### Osio 10 (Assosiaatio)
+* 10.1 Hissi-luokka (siirry, ylös, alas)
+* 10.2 Talo-luokka ja hissien hallinta
+
+### Osio 11 (Periytyminen)
+* 11.1 Julkaisu-, Kirja- ja Lehti-luokat (tulosta_tiedot)
