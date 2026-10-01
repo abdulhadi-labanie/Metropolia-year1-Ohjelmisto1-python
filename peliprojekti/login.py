@@ -1,5 +1,6 @@
 from utils import read_int_input, read_str_input, clear_screen
 from storage import create_new_manager_file, is_user_exist, get_manager
+from models import clsManager
 
 
 
@@ -69,6 +70,8 @@ def start_session():
         show_start_session()
         active_username = star_session_switcher()
 
-    current_manager = get_manager(active_username)
+    raw_data = get_manager(active_username)
 
-    return current_manager
+    active_manager_object = clsManager.from_dict(raw_data)
+
+    return active_manager_object
