@@ -1,12 +1,11 @@
-# aircraft_catalog.py
-
-
 def aircraft_catalog() -> list:
     aircraft_catalog_list = [
         {
             "manufacturer": "Airbus",
             "model": "A340-300",
             "required_crew": 10,
+            "passengers_capacity": 295,
+            "ticket_price_usd": 10_053,
             "optimal_range_km": 3_400,
             "financials": {
                 "price": 70_000_000,
@@ -24,6 +23,8 @@ def aircraft_catalog() -> list:
             "manufacturer": "Airbus",
             "model": "A318",
             "required_crew": 5,
+            "passengers_capacity": 132,
+            "ticket_price_usd": 3_483,
             "optimal_range_km": 150,
             "financials": {
                 "price": 77_400_000,
@@ -41,6 +42,8 @@ def aircraft_catalog() -> list:
             "manufacturer": "Airbus",
             "model": "A330-200",
             "required_crew": 11,
+            "passengers_capacity": 247,
+            "ticket_price_usd": 6_683,
             "optimal_range_km": 1_850,
             "financials": {
                 "price": 238_500_000,
@@ -58,6 +61,8 @@ def aircraft_catalog() -> list:
             "manufacturer": "Airbus",
             "model": "A320ceo",
             "required_crew": 6,
+            "passengers_capacity": 180,
+            "ticket_price_usd": 3_314,
             "optimal_range_km": 700,
             "financials": {
                 "price": 101_000_000,
@@ -75,6 +80,8 @@ def aircraft_catalog() -> list:
             "manufacturer": "Airbus",
             "model": "A380-800",
             "required_crew": 21,
+            "passengers_capacity": 525,
+            "ticket_price_usd": 17_792,
             "optimal_range_km": 4_500,
             "financials": {
                 "price": 445_600_000,
@@ -92,6 +99,8 @@ def aircraft_catalog() -> list:
             "manufacturer": "Airbus",
             "model": "A330-900neo",
             "required_crew": 10,
+            "passengers_capacity": 287,
+            "ticket_price_usd": 5_558,
             "optimal_range_km": 3_400,
             "financials": {
                 "price": 296_400_000,
@@ -109,6 +118,8 @@ def aircraft_catalog() -> list:
             "manufacturer": "Airbus",
             "model": "A350-900",
             "required_crew": 11,
+            "passengers_capacity": 325,
+            "ticket_price_usd": 6_103,
             "optimal_range_km": 4_500,
             "financials": {
                 "price": 317_400_000,
@@ -126,6 +137,8 @@ def aircraft_catalog() -> list:
             "manufacturer": "Airbus",
             "model": "A320neo",
             "required_crew": 6,
+            "passengers_capacity": 194,
+            "ticket_price_usd": 2_788,
             "optimal_range_km": 820,
             "financials": {
                 "price": 110_600_000,
@@ -143,6 +156,8 @@ def aircraft_catalog() -> list:
             "manufacturer": "Airbus",
             "model": "A220-300",
             "required_crew": 5,
+            "passengers_capacity": 160,
+            "ticket_price_usd": 2_352,
             "optimal_range_km": 510,
             "financials": {
                 "price": 91_500_000,
@@ -160,6 +175,8 @@ def aircraft_catalog() -> list:
             "manufacturer": "Airbus",
             "model": "A321neo",
             "required_crew": 7,
+            "passengers_capacity": 240,
+            "ticket_price_usd": 3_011,
             "optimal_range_km": 1_900,
             "financials": {
                 "price": 129_500_000,
