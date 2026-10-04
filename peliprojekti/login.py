@@ -1,8 +1,7 @@
 from utils import read_int_input, read_str_input, clear_screen
 from storage import create_new_manager_file, is_user_exist, get_manager
-from models import clsManager
-
-
+from models.clsManager import clsManager
+from models.clsSessionManager import clsSessionManager
 
 def register():
     print("Register page:")
@@ -43,8 +42,7 @@ def login():
 
 
 def star_session_switcher():
-    user_choice = read_int_input("\nEnter your choice (1-2): ",1,2)
-
+    user_choice = read_int_input("\nEnter your choice (1-2): ", 1, 2)
     if user_choice == 1:
         clear_screen()
         return register()
@@ -52,7 +50,6 @@ def star_session_switcher():
         clear_screen()
         return login()
     return None
-
 
 
 def show_start_session():
@@ -71,7 +68,6 @@ def start_session():
         active_username = star_session_switcher()
 
     raw_data = get_manager(active_username)
-
     active_manager_object = clsManager.from_dict(raw_data)
-
-    return active_manager_object
+    
+    clsSessionManager.set_active_manager(active_manager_object)
