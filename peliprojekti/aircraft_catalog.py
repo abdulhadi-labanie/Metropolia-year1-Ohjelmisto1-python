@@ -1,12 +1,12 @@
-# aircraft_catalog.py
-
-
 def aircraft_catalog() -> list:
     aircraft_catalog_list = [
         {
+            "aircraft_ID": "001",
             "manufacturer": "Airbus",
             "model": "A340-300",
             "required_crew": 10,
+            "passengers_capacity": 295,
+            "ticket_price": 10_053,
             "optimal_range_km": 3_400,
             "financials": {
                 "price": 70_000_000,
@@ -21,9 +21,12 @@ def aircraft_catalog() -> list:
             },
         },
         {
+            "aircraft_ID": "002",
             "manufacturer": "Airbus",
             "model": "A318",
             "required_crew": 5,
+            "passengers_capacity": 132,
+            "ticket_price": 3_483,
             "optimal_range_km": 150,
             "financials": {
                 "price": 77_400_000,
@@ -38,9 +41,12 @@ def aircraft_catalog() -> list:
             },
         },
         {
+            "aircraft_ID": "003",
             "manufacturer": "Airbus",
             "model": "A330-200",
             "required_crew": 11,
+            "passengers_capacity": 247,
+            "ticket_price": 6_683,
             "optimal_range_km": 1_850,
             "financials": {
                 "price": 238_500_000,
@@ -55,9 +61,12 @@ def aircraft_catalog() -> list:
             },
         },
         {
+            "aircraft_ID": "004",
             "manufacturer": "Airbus",
             "model": "A320ceo",
             "required_crew": 6,
+            "passengers_capacity": 180,
+            "ticket_price": 3_314,
             "optimal_range_km": 700,
             "financials": {
                 "price": 101_000_000,
@@ -72,9 +81,12 @@ def aircraft_catalog() -> list:
             },
         },
         {
+            "aircraft_ID": "005",
             "manufacturer": "Airbus",
             "model": "A380-800",
             "required_crew": 21,
+            "passengers_capacity": 525,
+            "ticket_price": 17_792,
             "optimal_range_km": 4_500,
             "financials": {
                 "price": 445_600_000,
@@ -89,9 +101,12 @@ def aircraft_catalog() -> list:
             },
         },
         {
+            "aircraft_ID": "006",
             "manufacturer": "Airbus",
             "model": "A330-900neo",
             "required_crew": 10,
+            "passengers_capacity": 287,
+            "ticket_price": 5_558,
             "optimal_range_km": 3_400,
             "financials": {
                 "price": 296_400_000,
@@ -106,9 +121,12 @@ def aircraft_catalog() -> list:
             },
         },
         {
+            "aircraft_ID": "007",
             "manufacturer": "Airbus",
             "model": "A350-900",
             "required_crew": 11,
+            "passengers_capacity": 325,
+            "ticket_price": 6_103,
             "optimal_range_km": 4_500,
             "financials": {
                 "price": 317_400_000,
@@ -123,9 +141,12 @@ def aircraft_catalog() -> list:
             },
         },
         {
+            "aircraft_ID": "008",
             "manufacturer": "Airbus",
             "model": "A320neo",
             "required_crew": 6,
+            "passengers_capacity": 194,
+            "ticket_price": 2_788,
             "optimal_range_km": 820,
             "financials": {
                 "price": 110_600_000,
@@ -140,9 +161,12 @@ def aircraft_catalog() -> list:
             },
         },
         {
+            "aircraft_ID": "009",
             "manufacturer": "Airbus",
             "model": "A220-300",
             "required_crew": 5,
+            "passengers_capacity": 160,
+            "ticket_price": 2_352,
             "optimal_range_km": 510,
             "financials": {
                 "price": 91_500_000,
@@ -157,9 +181,12 @@ def aircraft_catalog() -> list:
             },
         },
         {
+            "aircraft_ID": "010",
             "manufacturer": "Airbus",
             "model": "A321neo",
             "required_crew": 7,
+            "passengers_capacity": 240,
+            "ticket_price": 3_011,
             "optimal_range_km": 1_900,
             "financials": {
                 "price": 129_500_000,
@@ -180,7 +207,7 @@ def aircraft_catalog() -> list:
 
 def print_aircraft_catalog_table(aircraft_catalog: list):
     header = (
-        f"| {'Manufacturer':<12} | {'Model':<12} | {'Crew':<5} | {'Range(km)':<10} "
+        f"| {'aircraft ID':<12} | {'Manufacturer':<12} | {'Model':<12} | {'Crew':<5} | {'Range(km)':<10} "
         f"| {'Price (€)':<14} | {'CO2/km':<8} | {'CO2 Rating':<10} |"
     )
     divider = "-" * len(header)
@@ -190,6 +217,7 @@ def print_aircraft_catalog_table(aircraft_catalog: list):
     print(divider)
 
     for aircraft in aircraft_catalog:
+        aircraft_ID = aircraft["aircraft_ID"]
         mfr = aircraft["manufacturer"]
         model = aircraft["model"]
         crew = aircraft["required_crew"]
@@ -199,7 +227,7 @@ def print_aircraft_catalog_table(aircraft_catalog: list):
         co2_rating = aircraft["environmental_impact"]["co2_rating"]
 
         print(
-            f"| {mfr:<12} | {model:<12} | {crew:<5} | {opt_range:<10,} "
+            f"| {aircraft_ID:<12} | {mfr:<12} | {model:<12} | {crew:<5} | {opt_range:<10,} "
             f"| {price:<14,} | {co2_km:<8.1f} | {co2_rating:<10.1f} |"
         )
 

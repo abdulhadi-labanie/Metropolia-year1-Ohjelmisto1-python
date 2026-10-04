@@ -1,19 +1,14 @@
 from utils import clear_screen, read_str_input, read_bool_input
 from aircraft_catalog import print_aircraft_catalog_table, aircraft_catalog
 from storage import create_new_career, get_manager, storage_new_aircraft
+from models.clsSessionManager import clsSessionManager
+from models.clsManager import clsManager
 
 
-def get_active_company(current_manager):
-    for company in current_manager.get("career", []):
-        if company.get("is_active"):
-            return company
-    return None
-
-
-def update_success_data(current_manager_data):
-    updated_manager = get_manager(current_manager_data["user_name"])
-    current_manager_data.clear()
-    current_manager_data.update(updated_manager)
+def update_success_data(user_name):
+    updated_dict = get_manager(user_name)
+    new_manager_obj = clsManager.from_dict(updated_dict)
+    clsSessionManager.set_active_manager(new_manager_obj)
     print("\n[ok] Data successfully saved and synchronized!")
 
 
@@ -22,7 +17,7 @@ def Select_country_headquarters():
     print("1.[Finland]  2.[Swiden]  3.[Germany]  4.[Turkish]  5.[Syria].")
     is_country_selected = False
     while not is_country_selected:
-        country = read_str_input("Select one of them: ").strip().capitalize()
+        country = read_str_input("Select one of them [country name or numbers]: ").strip().capitalize()
         hub_airport = ""
 
         if country in ["Finland", "1"]:
@@ -43,43 +38,44 @@ def Select_country_headquarters():
     return country, hub_airport
 
 
-def fell_first_company_plan(current_manager):
+def fell_first_company_plan():
+    manager = clsSessionManager.get_active_manager()
     print("Interface for appointing a new airline manager:")
     company_name = read_str_input("Enter your company name: ")
     country, hub_airport = Select_country_headquarters()
-    company_budget = 500000000
+    company_budget = 1000000000
     print(f"Your company budget is : {company_budget:,}€")
     fleet_count = 0
 
-    success = create_new_career(current_manager["user_name"], company_name, country, 
-                                hub_airport, company_budget, fleet_count)
+    success = create_new_career(manager.user_name, company_name, country, hub_airport, company_budget, fleet_count)
 
     if success:
-        update_success_data(current_manager)
+        update_success_data(manager.user_name)
 
 
-def show_aircraft_catalog_table(current_manager: dict):
-    active_company = get_active_company(current_manager)
-    print(f"\nWelcome to the airline, Manager {current_manager['user_name']}.\n\n")
+def show_aircraft_catalog_table_view():
+    manager = clsSessionManager.get_active_manager()
+    print(f"\nWelcome to the airline, Manager {manager.user_name}.\n\n")
     print_aircraft_catalog_table(aircraft_catalog())
 
 
-def by_aircraft(current_manager, catalog_list):
-    is_want_by_aircraft = True
+def buy_aircraft(catalog_list):
+    is_want_buy_aircraft = True
 
-    while is_want_by_aircraft:
-        active_company = get_active_company(current_manager)
+    while is_want_buy_aircraft:
+        manager = clsSessionManager.get_active_manager()
+        active_company = manager.get_active_company()
         if not active_company:
             print("\n[!] Error: No active company found!")
             break
 
-        current_budget = active_company["company_budget"]
+        current_budget = active_company.company_budget
         print(f"\nYour company budget = {current_budget:,} €")
-        user_selection = read_str_input("\nSelect an aircraft by [model name] (e.g., A380-800 or A318): ").strip().upper()
+        user_selection = read_str_input("\nSelect an aircraft buy [model name] or [aircraft ID]: ").strip().upper()
 
         selected_plane = None
         for aircraft in catalog_list:
-            if aircraft["model"].upper() == user_selection:
+            if aircraft["model"].upper() == user_selection or aircraft["aircraft_ID"].upper() == user_selection:
                 selected_plane = aircraft
                 break
 
@@ -87,36 +83,45 @@ def by_aircraft(current_manager, catalog_list):
             plane_price = selected_plane["financials"]["price"]
             if current_budget >= plane_price:
                 new_budget = current_budget - plane_price
-                success = storage_new_aircraft(current_manager["user_name"], new_budget, selected_plane)
+                selected_plane["aircraft_ID"] += "-" + str(active_company.fleet_count +1)
+                success = storage_new_aircraft(manager.user_name, new_budget, selected_plane)
 
                 if success:
-                    update_success_data(current_manager)
+                    update_success_data(manager.user_name)
                     print(f"\n[ok] Successfully purchased {selected_plane['manufacturer']} {selected_plane['model']}!")
             else:
                 print(f"\n[!] Budget insufficient! Price: {plane_price:,} €, Your Budget: {current_budget:,} €")
         else:
             print(f"\n[!] Aircraft model '{user_selection}' not found in catalog!")
 
-        is_want_by_aircraft = read_bool_input("\nDo you want to buy another aircraft? [y/n]: ")
+        manager = clsSessionManager.get_active_manager()
+        active_company = manager.get_active_company()
+        
+        if active_company.fleet_count != 0:
+            is_want_buy_aircraft = read_bool_input("\nDo you want to buy another aircraft? [y/n]: ")
+        else:
+            print("[!] Your fleet_count should have a minmom one aircraft. buy your first aircraft.")
 
 
-def show_my_fleet(current_manager: dict):
-    active_company = get_active_company(current_manager)
+def show_my_fleet():
+    manager = clsSessionManager.get_active_manager()
+    active_company = manager.get_active_company()
 
-    if not active_company or not active_company.get("years"):
+    if not active_company or not active_company.years:
         print("\n[!] No active company or fleet data found.")
         return
 
-    latest_year = list(active_company["years"].keys())[-1]
-    owned_planes = active_company["years"][latest_year]["planes"]
+    latest_year_label = list(active_company.years.keys())[-1]
+    latest_year_obj = active_company.years[latest_year_label]
+    owned_planes = latest_year_obj.planes
 
-    print(f"\n\t===== {active_company['company_name']} - MY FLEET =====\n")
+    print(f"\n\t===== {active_company.company_name} - MY FLEET =====\n")
 
     if not owned_planes:
         print("Your fleet is currently empty! Buy aircraft from the market.")
         return
 
-    header = f"| {'#':<3} | {'Model':<12} | {'Crew':<5} | {'Range(km)':<10} | {'CO2 Rating':<10} |"
+    header = f"| {'#':<3} | {'aircraft ID':<13} | {'Model':<12} | {'Crew':<5} | {'Range(km)':<10} | {'CO2 Rating':<10} |"
     divider = "-" * len(header)
     print(divider)
     print(header)
@@ -124,28 +129,29 @@ def show_my_fleet(current_manager: dict):
 
     idx = 1
     for plane in owned_planes:
-        model = plane["specs"]["model"]
-        crew = plane["specs"]["required_crew"]
-        opt_range = plane["specs"]["optimal_range_km"]
-        co2_rating = plane["specs"]["environmental_impact"]["co2_rating"]
+        aircraft_ID = plane.specs["aircraft_ID"]
+        model = plane.specs["model"]
+        crew = plane.specs["required_crew"]
+        opt_range = plane.specs["optimal_range_km"]
+        co2_rating = plane.specs["environmental_impact"]["co2_rating"]
 
-        print(f"| {idx:<3} | {model:<12} | {crew:<5} | {opt_range:<10,} | {co2_rating:<10.1f} |")
+        print(f"| {idx:<3} | {aircraft_ID:<13} | {model:<12} | {crew:<5} | {opt_range:<10,} | {co2_rating:<10.1f} |")
         idx += 1
 
     print(divider + "\n")
 
 
-def start_new_managing(current_manager):
+def start_new_managing():
     clear_screen()
-    fell_first_company_plan(current_manager)
+    fell_first_company_plan()
 
     input("\n> Press Enter to continue to Aircraft Market...")
 
     clear_screen()
     catalog_list = aircraft_catalog()
-    show_aircraft_catalog_table(current_manager)
-    by_aircraft(current_manager, catalog_list)
-    show_my_fleet(current_manager)
+    show_aircraft_catalog_table_view()
+    buy_aircraft(catalog_list)
+    show_my_fleet()
     input("\n> Press Enter to return...")
 
 
@@ -172,6 +178,7 @@ def start_new_managing(current_manager):
                         {
                             "specs": 
                             {
+                                "aircraft_ID": "001-1",
                                 "manufacturer": "Airbus",
                                 "model": "A320neo",
                                 "required_crew": 6,
