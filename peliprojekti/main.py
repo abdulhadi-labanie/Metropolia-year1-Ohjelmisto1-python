@@ -3,10 +3,8 @@ from menus.main_meun import main_menu
 from models.clsSessionManager import clsSessionManager
 
 def main():
-    print("\n*********** Projekti 1 to 4 ***********\n")
-
+    print("\n*********** ECO-Airline Manager ***********\n")
     start_session()
-
     if clsSessionManager.get_active_manager():
         is_running = True
 
