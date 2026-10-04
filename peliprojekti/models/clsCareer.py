@@ -1,3 +1,5 @@
+from models.clsYear import clsYear
+
 class clsCareer:
     def __init__(self, company_name, country, hub_airport, company_budget, is_active, fleet_count, years):
         self.company_name = company_name
@@ -7,3 +9,13 @@ class clsCareer:
         self.is_active = is_active
         self.fleet_count = fleet_count
         self.years = years
+
+    @classmethod
+    def from_dict(cls, data: dict):
+        years_dict = {}
+        for year_label, year_data in data.get("years", {}).items():
+            years_dict[year_label] = clsYear.from_dict(year_label, year_data)
+
+        return cls(company_name=data.get("company_name"), country=data.get("country"), hub_airport=data.get("hub_airport"),
+            company_budget=data.get("company_budget"), is_active=data.get("is_active"),
+            fleet_count=data.get("fleet_count"), years=years_dict)
