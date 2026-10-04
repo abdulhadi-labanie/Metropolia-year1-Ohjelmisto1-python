@@ -1,29 +1,40 @@
-# ECO-Airline Manager 🎮
+# ECO-Airline Manager
 
-## Tekijä: Abdulhadi Labanie ✈️
-
+## Tekijä
+Abdulhadi Labanie
 
 ## Kuvaus pelistä
-
-Tämä on tekstipohjainen peli Pythonilla. Pelissä pelaaja toimii lentoyhtiön johtajana. Pelin tarkoituksena on valita hyvät lentoreitit ja päättää lippujen hinnat, jotta yhtiö tekee voittoa ja säästää ympäristöä.
+Tämä on tekstipohjainen peli, joka on tehty Pythonilla. Pelissä pelaaja toimii lentoyhtiön johtajana. Pelin tarkoituksena on valita hyvät lentoreitit ja ostaa oikeita lentokoneita, jotta yhtiö tekee voittoa ja säästää ympäristöä.
 
 ## Kestävän kehityksen teema
+Peli liittyy kestävään kehitykseen ja ilmastotekoihin. Pelissä lasketaan CO2-päästöt ja lentokoneen tehokkuus. Pelaajan täytyy yrittää vähentää päästöjä reittivalinnoilla. 
+Esimerkki: Jos käytät isoa lentokonetta lyhyellä reitillä, CO2-arvosana on huono. Oikea kone oikealle reitille antaa paremman arvosanan.
 
-Peli liittyy kestävään kehitykseen ja ilmastotekoihin. Pelissä lasketaan polttoaineen kulutus ja CO2-päästöt. Pelaajan täytyy yrittää vähentää päästöjä, kun hän valitsee reittejä.
+## Pelin rakenne ja logiikka
+Pelin kulku on jaettu kolmeen pääosaan: pelaajan tiedot, uusi ura ja pelin logiikka. Voit nähdä pelin rakenteen alla olevasta kaaviosta:
 
-## Mitä on tehty tähän mennessä (Projekti 1 ja 2)
+![ECO-Airline Manager Map](<img/ECO-Airline Manager.png>)
 
-- Käyttäjän nimen ja iän kysyminen (peliin pääsee vain jos on vähintään 12-vuotias).
-- Päävalikko, joka toimii silmukassa (while-silmukka).
-- Päävalikosta voi valita vaihtoehdot 1, 2 tai 3.
-- Pelin voi lopettaa myös kirjoittamalla "lopeta".
-- Syötteiden tarkistus (virheiden käsittely try-exceptillä).
+## Vuokaavion (Flowchart) linkki https://canva.link/d0pgrpm9ju2hnk7
+
+## Arkkitehtuuri ja tietorakenne
+Pelin tiedot tallennetaan paikallisesti JSON-tiedostoon. Jokaisella pelaajalla on oma tiedosto (esimerkiksi `abdulhadi.json`). 
+
+Tietorakenne on jaettu selkeisiin osiin:
+1. Käyttäjä (Manager): Pelaajan nimi ja ikä.
+2. Ura (Career): Yrityksen nimi, budjetti ja kotikenttä (esim. Helsinki).
+3. Vuodet (Years): Tilastot tallennetaan vuosittain (esim. vuosi 2026).
+4. Lentokoneet (Planes): Jokaisen koneen tekniset tiedot ja tulokset (lennot, matkustajat, voitto ja CO2-päästöt).
+
+Tämä rakenne (OOP - Olio-ohjelmointi) pitää pelin tiedot hyvässä järjestyksessä ja helpottaa tallentamista.
+
+## Mitä on tehty tähän mennessä
+- Käyttäjän nimen ja iän kysyminen (pelaajan täytyy olla vähintään 12-vuotias).
+- Päävalikko, joka toimii while-silmukassa.
+- Syötteiden tarkistus ja virheiden käsittely (try-except).
+- Luokkien (OOP) luominen: Manager, Career ja Plane.
+- Pelin tilan tallentaminen ja lukeminen JSON-tiedostosta.
+- CO2-laskuri ja voiton laskeminen.
 
 ## Miten peli käynnistetään
-.....
-
-## Tulevat osat
-
-- Projekti 3: Lentotietojen tallettaminen ja funktiot.
-- Projekti 4: Luokat (OOP) kuten Pelaaja ja Reitti.
-- Projekti 5: Tiedostojen lukeminen ja tallentaminen.
+(Lisää tähän ohjeet, miten peli käynnistetään, esim. `python main.py`)
