@@ -18,9 +18,15 @@ class clsManager:
         
         return new_manager_object
 
-    
     def get_active_company(self) -> clsCareer:
         for company in self.career:
             if company.is_active:
                 return company
         return None
+
+    def to_dict(self) -> dict:
+            careers_list = []
+            for company in self.career:
+                careers_list.append(company.to_dict())
+                
+            return {"user_name": self.user_name,"age": self.age,"career": careers_list}
