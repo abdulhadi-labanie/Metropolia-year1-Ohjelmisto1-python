@@ -35,7 +35,7 @@ def fell_first_company_data():
     company_name = read_str_input("Enter your company name: ")
     country, hub_airport = Select_country_headquarters()
     company_budget = 1000000000
-    print(f"Your company budget is : {company_budget:,}€")
+    print(f"\n\nYour company budget is : {company_budget:,}€")
     fleet_count = 0
 
     success = create_new_career(manager.user_name, company_name, country, hub_airport, company_budget, fleet_count)

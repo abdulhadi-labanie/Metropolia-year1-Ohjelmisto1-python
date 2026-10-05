@@ -1,0 +1,120 @@
+{
+    "user_name": "abdulhadi",
+    "age": 22,
+    "career": [
+        {
+            "company_name": "Eagle-airline",
+            "country": "Syria",
+            "hub_airport": "DAM",
+            "company_budget": 652826911,
+            "is_active": true,
+            "fleet_count": 2,
+            "years": {
+                "2026": {
+                    "planes": [
+                        {
+                            "specs": {
+                                "aircraft_ID": "005-1",
+                                "manufacturer": "Airbus",
+                                "model": "A380-800",
+                                "required_crew": 21,
+                                "passengers_capacity": 525,
+                                "ticket_price": 17792,
+                                "optimal_range_km": 6500,
+                                "financials": {
+                                    "price": 445600000,
+                                    "annual_maintenance_cost": 6000000,
+                                    "daily_operating_cost": 15000,
+                                    "daily_net_profit": 29000
+                                },
+                                "operations_24h": {
+                                    "flights_per_24h": 1
+                                },
+                                "environmental_impact": {
+                                    "co2_emissions_per_km": 22.0,
+                                    "co2_rating": 7.9
+                                }
+                            },
+                            "stats": {
+                                "total_flights": 1695,
+                                "failed_landings": 8,
+                                "total_passengers_capacity": 782287,
+                                "net_profit": 213953466,
+                                "total_co2_emissions_tonnes": 80173.5,
+                                "supported_airports": [
+                                    "PMS",
+                                    "LTK",
+                                    "ALP",
+                                    "DEZ",
+                                    "KAC",
+                                    "BEY",
+                                    "AMM",
+                                    "CAI",
+                                    "BGW",
+                                    "IST",
+                                    "RUH",
+                                    "DOH",
+                                    "DXB",
+                                    "SVO",
+                                    "BER",
+                                    "CDG"
+                                ],
+                                "airline_selected": "CDG",
+                                "total_plane_co2_rating": 10.9,
+                                "total_profit_rating": 1.4
+                            }
+                        },
+                        {
+                            "specs": {
+                                "aircraft_ID": "010-2",
+                                "manufacturer": "Airbus",
+                                "model": "A321neo",
+                                "required_crew": 7,
+                                "passengers_capacity": 240,
+                                "ticket_price": 4100,
+                                "optimal_range_km": 1900,
+                                "financials": {
+                                    "price": 129500000,
+                                    "annual_maintenance_cost": 950000,
+                                    "daily_operating_cost": 3000,
+                                    "daily_net_profit": 12000
+                                },
+                                "operations_24h": {
+                                    "flights_per_24h": 2
+                                },
+                                "environmental_impact": {
+                                    "co2_emissions_per_km": 5.2,
+                                    "co2_rating": 9.8
+                                }
+                            },
+                            "stats": {
+                                "total_flights": 944,
+                                "failed_landings": 3,
+                                "total_passengers_capacity": 222029,
+                                "net_profit": 13973445,
+                                "total_co2_emissions_tonnes": 22678.66,
+                                "supported_airports": [
+                                    "PMS",
+                                    "LTK",
+                                    "ALP",
+                                    "DEZ",
+                                    "KAC",
+                                    "BEY",
+                                    "AMM",
+                                    "CAI",
+                                    "BGW",
+                                    "IST",
+                                    "RUH",
+                                    "DOH"
+                                ],
+                                "airline_selected": "DOH",
+                                "total_plane_co2_rating": 0.0,
+                                "total_profit_rating": 1.5
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}

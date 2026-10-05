@@ -231,27 +231,28 @@ def calculate_failed_landings_in_year(annual_flights: int,co2_rating: float,weat
     
     return round(annual_flights * failed_landing_per_flight)
 
-def calculate_expected_flight_passengers(total_year_flights: int, passengers_capacity: int, optimal_range_km: float, airport_data: dict) -> int:
+def calculate_single_flight_passengers(passengers_capacity: int, optimal_range_km: float, airport_data: dict) -> int:
     distance_km = airport_data.get("distance_km", 0)
     runway_condition = airport_data.get("runway_condition", 1.0)
-    total_passengers_capacity = 0
-    for i in range(total_year_flights):
-        load_factor = 0.98
-        if runway_condition > 1.2:
-            runway_penalty_rate = random.uniform(0.05, 0.15)
-            load_factor -= (runway_condition - 1.0) * runway_penalty_rate
-        if optimal_range_km > 0:
-            mismatch_ratio = distance_km / optimal_range_km
-        else:
-            mismatch_ratio = 1.0
+    
+    load_factor = 0.98
+    
+    if runway_condition > 1.2:
+        runway_penalty_rate = random.uniform(0.05, 0.15)
+        load_factor -= (runway_condition - 1.0) * runway_penalty_rate
+        
+    if optimal_range_km > 0:
+        mismatch_ratio = distance_km / optimal_range_km
+    else:
+        mismatch_ratio = 1.0
 
-        if mismatch_ratio < 0.4:
-            if passengers_capacity > 150:
-                mismatch_penalty_rate = random.uniform(0.05, 0.15)
-                load_factor -= mismatch_penalty_rate
-        expected_passengers = passengers_capacity * load_factor
-        total_passengers_capacity += expected_passengers
-    return round(total_passengers_capacity)
+    if mismatch_ratio < 0.4:
+        if passengers_capacity > 150:
+            mismatch_penalty_rate = random.uniform(0.05, 0.15)
+            load_factor -= mismatch_penalty_rate
+            
+    expected_passengers = passengers_capacity * load_factor
+    return round(expected_passengers)
 
 def calculate_annual_net_profit(total_passengers_capacity: int, plane: clsPlane) -> float:
     annual_operating_cost = plane.daily_operating_cost * 365.0
@@ -272,7 +273,7 @@ def calculate_company_co2_rating(base_co2_rating: float, flight_distance_km: flo
     else:
         distance_difference = optimal_range_km - flight_distance_km
 
-    range_deviation = distance_difference / optimal_range_km
+    range_deviation = (distance_difference + 1000) / optimal_range_km
     range_efficiency = 1.0 - range_deviation
     if range_efficiency < 0.0:
         range_efficiency = 0.0
@@ -285,19 +286,31 @@ def calculate_company_co2_rating(base_co2_rating: float, flight_distance_km: flo
         final_rating = 0.0
     return round(final_rating, 1)
 
+def calculate_expected_flight_passengers(total_year_flights: int, passengers_capacity: int, optimal_range_km: float, airport_data: dict) -> int:
+    total_passengers_capacity = 0
+    for i in range(total_year_flights):
+        total_passengers_capacity += calculate_single_flight_passengers(passengers_capacity, optimal_range_km, airport_data)
+    return total_passengers_capacity
 
 def calculate_company_profit_rating(plane: clsPlane, annual_net_profit: float, total_passengers_capacity: int, total_year_flights: int) -> float:
     max_annual_passengers = plane.passengers_capacity * total_year_flights
     max_annual_revenue = max_annual_passengers * plane.ticket_price
-    max_annual_profit = max_annual_revenue - (plane.annual_maintenance_cost + (plane.daily_operating_cost * 365.0)) / 65.0
+    
+    total_annual_costs = plane.annual_maintenance_cost + (plane.daily_operating_cost * 365.0)
+    max_annual_profit = (max_annual_revenue - total_annual_costs) / 65.0
+    
     if max_annual_profit <= 0.0:
         return 0.0
+        
     profit_ratio = (annual_net_profit / max_annual_profit) * 100.0
+    
     if profit_ratio > 100.0:
         profit_ratio = 100.0
     elif profit_ratio < 0.0:
         profit_ratio = 0.0
+        
     return round(profit_ratio, 1)
+
 
 def Main_Definig_plan_for_each_aircraft_coming_year(plane: clsPlane, user_selected_airline, airport_data_dict):
     AVERAGE_SPEED_KMH = 800.0

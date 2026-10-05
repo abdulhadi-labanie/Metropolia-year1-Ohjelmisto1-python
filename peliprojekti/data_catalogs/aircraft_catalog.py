@@ -6,7 +6,7 @@ def aircraft_catalog() -> list:
             "model": "A340-300",
             "required_crew": 10,
             "passengers_capacity": 295,
-            "ticket_price": 2_053,
+            "ticket_price": 20.0,
             "optimal_range_km": 4_400,
             "financials": {
                 "price": 70_000_000,
@@ -26,7 +26,7 @@ def aircraft_catalog() -> list:
             "model": "A318",
             "required_crew": 5,
             "passengers_capacity": 132,
-            "ticket_price": 3_483,
+            "ticket_price": 16.0,
             "optimal_range_km": 1_250,
             "financials": {
                 "price": 77_400_000,
@@ -46,7 +46,7 @@ def aircraft_catalog() -> list:
             "model": "A330-200",
             "required_crew": 11,
             "passengers_capacity": 247,
-            "ticket_price": 6_683,
+            "ticket_price": 45.0,
             "optimal_range_km": 2_850,
             "financials": {
                 "price": 238_500_000,
@@ -66,7 +66,7 @@ def aircraft_catalog() -> list:
             "model": "A320ceo",
             "required_crew": 6,
             "passengers_capacity": 180,
-            "ticket_price": 3_314,
+            "ticket_price": 22.0,
             "optimal_range_km": 1_700,
             "financials": {
                 "price": 101_000_000,
@@ -86,7 +86,7 @@ def aircraft_catalog() -> list:
             "model": "A380-800",
             "required_crew": 21,
             "passengers_capacity": 525,
-            "ticket_price": 17_792,
+            "ticket_price": 46.0,
             "optimal_range_km": 6_500,
             "financials": {
                 "price": 445_600_000,
@@ -106,7 +106,7 @@ def aircraft_catalog() -> list:
             "model": "A330-900neo",
             "required_crew": 10,
             "passengers_capacity": 287,
-            "ticket_price": 5_558,
+            "ticket_price": 52.0,
             "optimal_range_km": 4_400,
             "financials": {
                 "price": 296_400_000,
@@ -126,7 +126,7 @@ def aircraft_catalog() -> list:
             "model": "A350-900",
             "required_crew": 11,
             "passengers_capacity": 325,
-            "ticket_price": 6_103,
+            "ticket_price": 50.0,
             "optimal_range_km": 4_900,
             "financials": {
                 "price": 317_400_000,
@@ -146,7 +146,7 @@ def aircraft_catalog() -> list:
             "model": "A320neo",
             "required_crew": 6,
             "passengers_capacity": 194,
-            "ticket_price": 3_700,
+            "ticket_price": 26.0,
             "optimal_range_km": 820,
             "financials": {
                 "price": 110_600_000,
@@ -166,7 +166,7 @@ def aircraft_catalog() -> list:
             "model": "A220-300",
             "required_crew": 5,
             "passengers_capacity": 160,
-            "ticket_price": 3_150,
+            "ticket_price": 25.0,
             "optimal_range_km": 510,
             "financials": {
                 "price": 91_500_000,
@@ -186,7 +186,7 @@ def aircraft_catalog() -> list:
             "model": "A321neo",
             "required_crew": 7,
             "passengers_capacity": 240,
-            "ticket_price": 4_100,
+            "ticket_price": 25.0,
             "optimal_range_km": 1_900,
             "financials": {
                 "price": 129_500_000,

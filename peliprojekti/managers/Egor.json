@@ -1,0 +1,71 @@
+{
+    "user_name": "Egor",
+    "age": 20,
+    "career": [
+        {
+            "company_name": "Air airways",
+            "country": "Finland",
+            "hub_airport": "HEL",
+            "company_budget": 956865825,
+            "is_active": true,
+            "fleet_count": 1,
+            "years": {
+                "2026": {
+                    "planes": [
+                        {
+                            "specs": {
+                                "aircraft_ID": "001-1",
+                                "manufacturer": "Airbus",
+                                "model": "A340-300",
+                                "required_crew": 10,
+                                "passengers_capacity": 295,
+                                "ticket_price": 2053,
+                                "optimal_range_km": 4400,
+                                "financials": {
+                                    "price": 70000000,
+                                    "annual_maintenance_cost": 3500000,
+                                    "daily_operating_cost": 6000,
+                                    "daily_net_profit": 5000
+                                },
+                                "operations_24h": {
+                                    "flights_per_24h": 1
+                                },
+                                "environmental_impact": {
+                                    "co2_emissions_per_km": 12.5,
+                                    "co2_rating": 6.0
+                                }
+                            },
+                            "stats": {
+                                "total_flights": 3285,
+                                "failed_landings": 27,
+                                "total_passengers_capacity": 853370,
+                                "net_profit": 26865825,
+                                "total_co2_emissions_tonnes": 26690.62,
+                                "supported_airports": [
+                                    "TKU",
+                                    "TMP",
+                                    "OUL",
+                                    "RVN",
+                                    "KTT",
+                                    "TLL",
+                                    "RIX",
+                                    "ARN",
+                                    "VNO",
+                                    "OSL",
+                                    "LHR",
+                                    "CDG",
+                                    "IST",
+                                    "CAI",
+                                    "RUH"
+                                ],
+                                "airline_selected": "ARN",
+                                "total_plane_co2_rating": 5.5,
+                                "total_profit_rating": 1.4
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}
