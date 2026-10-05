@@ -37,4 +37,14 @@ Tämä rakenne (OOP - Olio-ohjelmointi) pitää pelin tiedot hyvässä järjesty
 - CO2-laskuri ja voiton laskeminen.
 
 ## Miten peli käynnistetään
-(Lisää tähän ohjeet, miten peli käynnistetään, esim. `python main.py`)
+(
+git clone
+`git clone https://github.com/abdulhadi-labanie/Metropolia-year1-Ohjelmisto1-python.git`
+
+Sitten RUN `main.py`
+
+Jos haluat lisätä pelitilastosi:
+1. kloonata pelin
+2. pelata
+3. Luoda PR:n ja hyväksyn JSON-tiedostosi. 
+)
